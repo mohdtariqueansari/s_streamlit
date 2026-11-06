@@ -3,7 +3,6 @@ import streamlit as st
 import streamlit.components.v1 as components
 import os
 import base64
-import html
 
 st.set_page_config(
     page_title="Sorry Zoya ❤️",
@@ -32,7 +31,10 @@ st.markdown("""
     color: white;
 }
 
-#MainMenu, footer, header {
+/* Hide only menu and footer.
+   Keep header visible for Deploy button. */
+
+#MainMenu, footer {
     visibility: hidden;
 }
 
@@ -209,7 +211,6 @@ if os.path.exists(song_path):
         height: 8px;
         border-radius: 10px;
         background: linear-gradient(to top, #ff4f98, #d9a0ff);
-        transition: height 0.2s;
     }}
 
     .playing .bar {{
@@ -281,8 +282,8 @@ if os.path.exists(song_path):
 
         <audio id="music" loop preload="auto">
             <source
-            src="data:audio/mpeg;base64,{audio_data}"
-            type="audio/mpeg">
+                src="data:audio/mpeg;base64,{audio_data}"
+                type="audio/mpeg">
         </audio>
 
     </div>
@@ -333,7 +334,8 @@ if os.path.exists(song_path):
 
     }});
 
-    // Attempt autoplay when the page opens
+    // Attempt autoplay when page opens
+
     music.play().then(() => {{
         updatePlaying();
     }}).catch(() => {{
@@ -400,7 +402,6 @@ if name:
             unsafe_allow_html=True
         )
 
-
         # ==================================
         # YOUR SMALL PHOTO
         # ==================================
@@ -424,9 +425,7 @@ if name:
         else:
             st.warning("Your photo was not found!")
 
-
         st.write("")
-
 
         # ==================================
         # PERSONAL APOLOGY MESSAGE
@@ -497,9 +496,7 @@ if name:
         </div>
         """, unsafe_allow_html=True)
 
-
         st.write("")
-
 
         # ==================================
         # FORGIVENESS BUTTON
