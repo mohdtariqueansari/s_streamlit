@@ -14,9 +14,9 @@ st.set_page_config(
 # FILE PATHS
 # ==========================================
 
-song_path = r"C:\Users\hp\Downloads\S_Streamlit\Chalo Jaane Do - Lyrical Video Song Bhoothnath Amitabh Bachchan, Juhi Chawla.mp3"
+song_path = r"Chalo Jaane Do - Lyrical Video Song Bhoothnath Amitabh Bachchan, Juhi Chawla.mp3"
 
-image_path = r"C:\Users\hp\Downloads\S_Streamlit\tt.jpeg"
+image_path = r"tt.jpeg"
 
 
 # ==========================================
