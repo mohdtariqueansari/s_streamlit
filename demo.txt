@@ -1,0 +1,286 @@
+
+import streamlit as st
+import streamlit.components.v1 as components
+import os
+import html
+import textwrap
+
+st.set_page_config(
+    page_title="A Little Apology",
+    page_icon="💗",
+    layout="centered"
+)
+
+# ---------------- CSS ----------------
+
+st.markdown("""
+<style>
+.stApp {
+    background: linear-gradient(135deg, #200d24, #45152f, #200d24);
+    color: white;
+}
+
+#MainMenu, footer, header {
+    visibility: hidden;
+}
+
+.block-container {
+    max-width: 850px;
+    padding-top: 3rem;
+}
+
+.title {
+    text-align: center;
+    font-size: 65px;
+    font-weight: 900;
+    color: #ffacd2;
+    text-shadow: 0 0 15px #ff3f91, 0 0 35px #ff3f91;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff3f91; }
+    to { text-shadow: 0 0 30px white, 0 0 50px #ff3f91; }
+}
+
+.subtitle {
+    text-align: center;
+    color: #ffd6e9;
+    font-size: 22px;
+}
+
+.heart {
+    text-align: center;
+    font-size: 75px;
+    color: #ff6fae;
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.letter {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,150,200,0.3);
+    border-radius: 25px;
+    padding: 35px 25px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(255,70,150,0.12);
+}
+
+.letter p {
+    font-size: 19px;
+    line-height: 1.9;
+    color: #ffe5f0;
+    margin-bottom: 22px;
+}
+
+.special {
+    text-align: center;
+    color: #ffb4d7;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.stButton button {
+    background: linear-gradient(90deg, #ff4f98, #bd4cff);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    height: 55px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.stButton button:hover {
+    color: white;
+    box-shadow: 0 0 20px #ff4f98;
+    border: 1px solid white;
+}
+
+.stTextInput input {
+    border-radius: 15px;
+    text-align: center;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
+# ---------------- Floating Hearts ----------------
+
+components.html("""
+<style>
+.float {
+    position: fixed;
+    bottom: -50px;
+    color: #ff78b5;
+    font-size: 25px;
+    pointer-events: none;
+    animation: floatup 10s linear infinite;
+    z-index: 999;
+}
+
+@keyframes floatup {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.8; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+</style>
+
+<div class="float" style="left:10%;animation-delay:0s">♥</div>
+<div class="float" style="left:30%;animation-delay:3s">♡</div>
+<div class="float" style="left:50%;animation-delay:1s">♥</div>
+<div class="float" style="left:75%;animation-delay:5s">♡</div>
+<div class="float" style="left:90%;animation-delay:2s">♥</div>
+""", height=0)
+
+
+# ---------------- Background Music ----------------
+
+st.markdown(
+    '<p class="special">A little music, from my heart</p>',
+    unsafe_allow_html=True
+)
+
+song_path = "C:\Users\hp\Downloads\S_Streamlit\Chalo Jaane Do - Lyrical Video Song Bhoothnath Amitabh Bachchan, Juhi Chawla.mp3"
+
+if os.path.exists(song_path):
+    st.audio(
+        song_path,
+        format="audio/mp3",
+        autoplay=True,
+        loop=True
+    )
+else:
+    st.warning("Please put song.mp3 in the same folder as this Python file.")
+
+
+# ---------------- Main Screen ----------------
+
+st.markdown('<div class="heart">♡</div>', unsafe_allow_html=True)
+
+st.markdown(
+    '<div class="title">I AM SORRY</div>',
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    '<p class="subtitle">Sometimes, a simple sorry comes straight from the heart.</p>',
+    unsafe_allow_html=True
+)
+
+st.write("")
+
+name = st.text_input(
+    "Enter your special person's name",
+    placeholder="Someone special..."
+)
+
+if name.strip():
+
+    safe_name = html.escape(name.strip())
+
+    st.markdown(
+        f'<h1 style="text-align:center;color:#ffacd2;">Hey {safe_name}...</h1>',
+        unsafe_allow_html=True
+    )
+
+    # ---------------- Apology Letter ----------------
+
+    st.markdown(textwrap.dedent("""
+    <div class="letter">
+
+        <p>
+        I know that sometimes words are not enough.
+        <br>
+        But today, I just want to tell you something.
+        </p>
+
+        <p>
+        I never wanted to hurt you.
+        <br>
+        I never wanted to make you feel bad.
+        </p>
+
+        <p>
+        Maybe I made mistakes, maybe I could have handled
+        things better...
+        </p>
+
+        <p>
+        But I genuinely feel sorry.
+        <br>
+        You are important to me, and I don't want a small
+        misunderstanding to ruin something beautiful.
+        </p>
+
+        <p>
+        I cannot change what happened,
+        <br>
+        but I can promise to try to do better.
+        </p>
+
+        <h2 style="color:#ffacd2;">
+        I AM REALLY SORRY.
+        </h2>
+
+        <div style="font-size:55px;">♡</div>
+
+    </div>
+    """), unsafe_allow_html=True)
+
+    st.write("")
+
+    # ---------------- Forgiveness ----------------
+
+    if "forgiven" not in st.session_state:
+        st.session_state.forgiven = False
+
+    if st.button("Can You Forgive Me? 💗", use_container_width=True):
+        st.session_state.forgiven = True
+
+    if st.session_state.forgiven:
+
+        st.balloons()
+
+        st.markdown("""
+        <div class="letter">
+            <h1 style="color:#ffacd2;">Thank You!</h1>
+
+            <p>
+            You have no idea how much this means to me.
+            <br><br>
+            I promise to be more careful with your feelings.
+            </p>
+
+            <div style="font-size:75px;">💗</div>
+
+            <h2 style="color:white;">
+            You are special.
+            </h2>
+        </div>
+        """, unsafe_allow_html=True)
+
+else:
+
+    st.markdown("""
+    <p style="text-align:center;color:#ffacd2;font-size:18px;">
+    A special message is waiting for someone special...
+    </p>
+    """, unsafe_allow_html=True)
+
+
+# ---------------- Footer ----------------
+
+st.markdown("""
+<hr style="border-color:#71334f;">
+
+<p style="text-align:center;color:#d99bb9;">
+Made with a little love and a sincere apology.
+</p>
+""", unsafe_allow_html=True)
